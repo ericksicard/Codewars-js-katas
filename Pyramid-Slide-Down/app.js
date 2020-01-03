@@ -20,6 +20,7 @@ You must come up with something more clever than that.
 (c) This task is a lyrical version of the Problem 18 and/or Problem 67 on ProjectEuler.
 */
 
+// First approach
 function longestSlideDown (pyramid) {
 
     let tri = [...pyramid];
@@ -42,4 +43,17 @@ function longestSlideDown (pyramid) {
     }
      
     return Number(tri[0]); 
+}
+
+//Second and more declarative solution
+function longestSlideDown (pyramid) {
+
+  let tri = [...pyramid];
+  
+  let result = tri.reduceRight( (last, curr) => {
+    return curr.map( (elm, idx) => elm + Math.max( last[idx] , last[idx + 1]))
+  })[0];
+  
+  return result;
+  
 }
