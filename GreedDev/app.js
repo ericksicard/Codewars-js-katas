@@ -15,13 +15,10 @@ var list1 = [
   function greetDevelopers(list) {
     let greeting = list.map( dev => {
     return {
-          firstName : dev.firstName,
-          lastName: dev.lastName,
-          country: dev.country,
-          continent: dev.continent,
-          age: dev.age,
-          language: dev.language,
+          ...dev,
           greeting : `Hi ${dev.firstName}, what do you like the most about ${dev.language}?`}
     })
-    return greeting;
+    console.log(greeting);
   }
+
+  greetDevelopers(list1)
