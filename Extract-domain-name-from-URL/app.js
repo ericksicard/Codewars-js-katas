@@ -39,3 +39,11 @@ function domainName(url){
   else domain = url.split(".")[0]
   return domain;
 }
+
+// Third Solution
+function domainName(url){
+  url = url.replace("https://", '');
+  url = url.replace("http://", '');
+  url = url.replace("www.", '');
+  return url.split('.')[0];
+};
