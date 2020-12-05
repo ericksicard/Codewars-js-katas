@@ -30,3 +30,12 @@ function domainName(url){
     }
     return host;
 }
+
+// Second solution
+function domainName(url){
+  let domain = ''
+  if ( url.includes("http" && "www") ) domain = url.split(".")[1]
+  else if ( url.includes("http") ) domain = url.split(".")[0].split("/")[2]
+  else domain = url.split(".")[0]
+  return domain;
+}
