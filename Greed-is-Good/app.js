@@ -40,3 +40,30 @@ function score( dice ) {
   
   return total;
 }
+
+//Solucion using reduce()
+
+function score( dice ) {
+  let arrScore = [0,0,0,0,0,0];
+  let finalScore;
+ 
+  dice.map( num => arrScore[num - 1] ++);
+
+  finalScore = arrScore.reduce( (acc, cur, idx) => {
+    if ( cur >= 3 ) {
+      if ( idx == 0 )  return acc + ( 1000 + (cur % 3)*100 );
+      if ( idx == 1 )  return acc + 200;
+      if ( idx == 2 )  return acc + 300;
+      if ( idx == 3 )  return acc + 400;
+      if ( idx == 4 )  return acc + ( 500 + (cur % 3)*50 );
+      if ( idx == 5 )  return acc + 600;
+    }
+    if ( cur < 3 ) {
+      if ( idx == 0 )  return acc + ( (cur % 3)*100 );
+      if ( idx == 4 )  return acc + ( (cur % 3)*50 );
+    }
+    return acc
+  }, 0)
+
+  return finalScore;
+}
